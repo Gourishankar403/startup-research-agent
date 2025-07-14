@@ -1,4 +1,4 @@
-# agents/research_agent.py
+
 
 from langchain.agents import initialize_agent, Tool
 from langchain.agents.agent_types import AgentType
@@ -11,18 +11,18 @@ from data_sources.dummy_api import fetch_dummy_api_data
 from dotenv import load_dotenv
 import os
 
-# Load Groq API Key
+
 load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key=os.getenv("GROQ_API_KEY")
 
 # Initialize Groq LLM
 llm = ChatGroq(
     api_key=groq_api_key,
-    model="llama3-8b-8192",  # ✅ use "model", not "model_name"
+    model="llama3-8b-8192",
     temperature=0.5
 )
 
-# Tools used by the agent
+
 tools = [
     Tool(
         name="WikipediaSearch",
@@ -41,7 +41,7 @@ tools = [
     )
 ]
 
-# Final prompt for the LLM to give the structured research report
+
 INSIGHTFUL_RESPONSE_PROMPT = """
 You are a startup research assistant. Your task is to provide an insightful report on the topic: "{query}".
 
@@ -57,7 +57,7 @@ Respond with the following sections:
 Keep it professional, detailed, and specific to the input.
 """
 
-# Initialize the agent with tools
+
 def create_research_agent():
     return initialize_agent(
         tools=tools,
@@ -72,12 +72,12 @@ def run_research_query(user_query: str) -> str:
     agent = create_research_agent()
 
     try:
-        _ = agent.run(user_query)  # Agent runs tools for exploration (optional)
+        _ = agent.run(user_query)
     except Exception as e:
         print(f"[Agent Tool Error] {e}")
 
-    final_prompt = INSIGHTFUL_RESPONSE_PROMPT.format(query=user_query)
-    final_response = llm.invoke(final_prompt)
+    final_prompt=INSIGHTFUL_RESPONSE_PROMPT.format(query=user_query)
+    final_response=llm.invoke(final_prompt)
 
     # Ensure output is clean text
     return final_response.content.strip()

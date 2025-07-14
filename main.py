@@ -26,7 +26,7 @@ st.title("🚀 Business Research Assistant")
 st.markdown("### 🔍 Enter Your Startup Idea or Research Question")
 user_query = st.text_input("E.g. 'AI in education', 'Blockchain for supply chains'")
 
-#pdf_file = st.file_uploader("📄 Upload PDF Report (Optional)", type=["pdf"])
+
 
 final_report = ""
 if st.button("Start Research") and user_query:
@@ -37,10 +37,10 @@ if st.button("Start Research") and user_query:
 if final_report:
     st.markdown("## 🧠 Final Report", unsafe_allow_html=True)
 
-    clean_report = textwrap.dedent(final_report.strip())
-    clean_report = clean_report.replace("**", "")  # Remove all asterisks
-    formatted_report = clean_report.replace("\n", "\n\n")
-    sections = formatted_report.split("\n\n")
+    clean_report=textwrap.dedent(final_report.strip())
+    clean_report=clean_report.replace("**", "")  # Remove all asterisks
+    formatted_report=clean_report.replace("\n", "\n\n")
+    sections=formatted_report.split("\n\n")
 
     for section in sections:
         if section.strip():

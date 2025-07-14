@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key=os.getenv("GROQ_API_KEY")
 
 llm = ChatGroq(
     api_key=groq_api_key,
@@ -14,7 +14,7 @@ llm = ChatGroq(
     temperature=0.3
 )
 
-formatter_prompt = PromptTemplate.from_template("""
+formatter_prompt=PromptTemplate.from_template("""
 You're a startup analyst assistant.
 
 Using the following raw tool outputs, write a structured research report in Markdown that includes:

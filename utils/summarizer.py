@@ -14,9 +14,9 @@ llm = ChatGroq(
     temperature=0.3
 )
 
-summarizer_chain = LLMChain(llm=llm, prompt=pdf_summary_template)
+summarizer_chain=LLMChain(llm=llm, prompt=pdf_summary_template)
 
-def summarize_text(text: str) -> str:
+def summarize_text(text:str)->str:
     if not text.strip():
         return "No content to summarize."
     try:

@@ -2,7 +2,7 @@ import wikipedia
 
 def fetch_wiki_summary(query: str) -> str:
     try:
-        summary = wikipedia.summary(query, sentences=5)
+        summary=wikipedia.summary(query, sentences=5)
         return summary
     except wikipedia.exceptions.DisambiguationError as e:
         return f"⚠️ Your query was ambiguous. Try one of these options: {', '.join(e.options[:5])}"
